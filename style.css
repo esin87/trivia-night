@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+/* Body styling */
+body {
+    background-color: gray;
+    min-height: 100vh;
+}
+
+/* Font Styling */
+h1 {
+    color: white;
+}
+
+/* Footer and below the fold */
+footer {
+    display: flex;
+    color: white;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 1fr;
+    /* flex-direction: column; */
+    /* flex-shrink: 0; */
+    /* align-items: center; */
+}
