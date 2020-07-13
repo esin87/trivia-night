@@ -9,23 +9,27 @@ controlPanelButton.addEventListener('click', handleStartReset);
 // [TODO] Create start button in DOM
 // let catStart = document.createElement('button');
 
-
 // Connect to trivia API for questions
-function handleStartReset (e) {
-    console.log({e})
-    // Fetch category URL Variable and number of questions
-    // let catURL = e.target.dataset.url;  // THIS REQUIRES ATTENTION
-    // let numbOfQuestions = e.target.dataset.questions; // THIS REQUIRES ATTENTION
-    
-    fetch ('https://opentdb.com/api.php?amount=10&category=18&type=multiple')
-            .then((res) => {
-                return res.json();
-            })
-            .then((res) => {
-                // Check res output
-                console.log(res);
-            })
-            if (event.target.classList.contains('.js-button')){
-                console.log("Line 30")
-            };
+function handleStartReset(e) {
+	console.log({ e });
+	// Fetch category URL Variable and number of questions
+	// let catURL = e.target.dataset.url;  // THIS REQUIRES ATTENTION
+	// let numbOfQuestions = e.target.dataset.questions; // THIS REQUIRES ATTENTION
+
+	fetch('https://opentdb.com/api.php?amount=10&category=18&type=multiple')
+		.then((res) => {
+			return res.json();
+		})
+		.then((res) => {
+			// Check res output
+			console.log({ res });
+			let displayQuestion = document.querySelector('.question-box');
+			let showQuestion = displayQuestion.createElement('div');
+			console.log(res.results[0].question);
+		});
+	if (e.target.classList.contains('.js-button')) {
+		console.log('Line 30');
+	}
 }
+
+//
