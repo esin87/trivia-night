@@ -23,9 +23,9 @@ function handleStartReset(e) {
 		.then((res) => {
 			// Check res output
 			console.log({ res });
-			let displayQuestion = document.querySelector('.question-box');
-			let showQuestion = displayQuestion.createElement('div');
-			console.log(res.results[0].question);
+			console.log(results[0].question);
+			// let displayQuestion = document.querySelector('.question-box');
+			// let showQuestion = displayQuestion.createElement('div');
 		});
 	if (e.target.classList.contains('.js-button')) {
 		console.log('Line 30');
