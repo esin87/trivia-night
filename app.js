@@ -4,10 +4,9 @@ let controlPanelButton = document.querySelector('.js-button');
 // Add event listener to the control-panel start-reset button
 controlPanelButton.addEventListener('click', handleStartReset);
 
-// [TODO] Create short category dropdown list and store to variable for url
-// [TODO] Create number of questions dropdown list and store to variable for url
-// [TODO] Create start button in DOM
-// let catStart = document.createElement('button');
+// [BONUS TODO] Create short category dropdown list and store to variable for url
+// [BONUS TODO] Create number of questions dropdown list and store to variable for url
+// [BONUS TODO] Create start button in DOM
 
 // Connect to trivia API for questions
 function handleStartReset(e) {
@@ -21,15 +20,67 @@ function handleStartReset(e) {
 			return res.json();
 		})
 		.then((res) => {
-			// Check res output
+			// Console logs to check res output
 			console.log({ res });
-			console.log(results[0].question);
-			// let displayQuestion = document.querySelector('.question-box');
-			// let showQuestion = displayQuestion.createElement('div');
-		});
-	if (e.target.classList.contains('.js-button')) {
-		console.log('Line 30');
-	}
-}
+			console.log(res.results[0].question);
+			console.log(res.results[0].correct_answer);
+			
+			
+			// DOM and question added to HTML
+			let questionTargetLocation = document.querySelector('.questions-box');
+			console.log({questionTargetLocation});
+			let createQuestionDisplayElement = document.createElement('p');
+			console.log({createQuestionDisplayElement});
+			questionTargetLocation.append(createQuestionDisplayElement)
+			createQuestionDisplayElement.innerText = res.results[0].question;
+			
+			// DOM create buttons and add innerTEXT for each
+			let answerTargetLocation = document.querySelector('.js-answer-buttons');
+			console.log({answerTargetLocation});
+			let incorrectAnswers = res.results[0].incorrect_answers;
+			console.log({incorrectAnswers});
+			
+			// ---------------------------------------
+			// THIS CODE MIGHT BE USEFUL FOR SOMETHING
+			// ---------------------------------------
+			// let ABS = document.querySelector('.answer-buttons');
+			// answerButtons.innerHTML = '';
+			// ABS.append(answerButtons);
+			
+			// FOR LOOP TO ITERATE THROUGH INCORRECT ANSWERS ARRAY
+			// store randNum=randomnubergenerated number here
+			// push correct answer to incorrectAnswers array at the index of randNum (don't overwrite anything that might be at that position)
+			for (let a = 0; a < incorrectAnswers.length; a++) {
+				console.log(incorrectAnswers[a]);
+				//else create incorrect answer buttons
+				// CREATE BUTTONS
+				let newButton = document.createElement('button');
+  				// and give it some content 
+				let newIncorrectAnswer = document.createTextNode(`${incorrectAnswers[a]}`); 
+				newButton.appendChild(newIncorrectAnswer);
+				// add the text node to the newly created buttons
+				answerTargetLocation.appendChild(newButton);
+				//if a == randNum create an ansewr button
+				// ANSWER SECTION
+				let correctAnswer = res.results[0].correct_answer;
+				let newAnswerButton = document.createElement('button');
+				let newCorrectAnswer = document.createTextNode(`${correctAnswer}`);
+				newAnswerButton
 
-//
+
+				// let createButtonAnswerElements = document.createElement('button');
+				// -------------------------------------------------------------
+				// createButtonAnswerElements.innerText = incorrectAnswers[a];
+				// createButtonAnswerElements.append(createButtonAnswerElements);
+				// --------------------------------------------------------------
+			}
+			// ---------------------------------
+			// CREATE RANDOM ORDER FOR QUESTIONS
+			// ---------------------------------
+			// button order including answer button
+			// Math.floor(Math.random() * 4);
+
+	
+		});
+
+}
