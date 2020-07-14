@@ -40,44 +40,60 @@ function handleStartReset(e) {
 			let incorrectAnswers = res.results[0].incorrect_answers;
 			console.log({incorrectAnswers});
 			
-			// ---------------------------------------
-			// THIS CODE MIGHT BE USEFUL FOR SOMETHING
-			// ---------------------------------------
-			// let ABS = document.querySelector('.answer-buttons');
-			// answerButtons.innerHTML = '';
-			// ABS.append(answerButtons);
-			
+			// ---------------------------------------------------	
 			// FOR LOOP TO ITERATE THROUGH INCORRECT ANSWERS ARRAY
-			// store randNum=randomnubergenerated number here
+			// ---------------------------------------------------
+
+			// [TODO]
+			// store randNum=randomNumberGenerated numbers here
 			// push correct answer to incorrectAnswers array at the index of randNum (don't overwrite anything that might be at that position)
+			// -----------------------------------------------
+
 			for (let a = 0; a < incorrectAnswers.length; a++) {
 				console.log(incorrectAnswers[a]);
-				//else create incorrect answer buttons
+				
+				// [TODO] clean up and make if loop
+				// Else create incorrect answer buttons
+				// ------------------------------------
+
+				// --------------
 				// CREATE BUTTONS
+				// --------------
 				let newButton = document.createElement('button');
-  				// and give it some content 
+  				// Fill it with some content 
 				let newIncorrectAnswer = document.createTextNode(`${incorrectAnswers[a]}`); 
 				newButton.appendChild(newIncorrectAnswer);
-				// add the text node to the newly created buttons
+				// Add text node to the newly created buttons
 				answerTargetLocation.appendChild(newButton);
-				//if a == randNum create an ansewr button
-				// ANSWER SECTION
-				let correctAnswer = res.results[0].correct_answer;
-				let newAnswerButton = document.createElement('button');
-				let newCorrectAnswer = document.createTextNode(`${correctAnswer}`);
-				newAnswerButton
+				
+				// [TODO]
+				// IF a == randNum create an answer button
+				// ---------------------------------------
 
-
-				// let createButtonAnswerElements = document.createElement('button');
-				// -------------------------------------------------------------
-				// createButtonAnswerElements.innerText = incorrectAnswers[a];
-				// createButtonAnswerElements.append(createButtonAnswerElements);
-				// --------------------------------------------------------------
+				
 			}
+			
+			// --------------
+			// ANSWER SECTION
+			// --------------
+			let correctAnswer = res.results[0].correct_answer;
+			console.log(correctAnswer);
+
+			// Create Button
+			let newAnswerButton = document.createElement('button');
+			// Fill it with some content
+			let newCorrectAnswer = document.createTextNode(`${correctAnswer}`);
+			newAnswerButton.appendChild(newCorrectAnswer);
+			// [TODO]
+			// Set data-attribute that this is the correct answer
+			
+			// Add text node to the newly created button
+			answerTargetLocation.appendChild(newAnswerButton);
+			
 			// ---------------------------------
 			// CREATE RANDOM ORDER FOR QUESTIONS
 			// ---------------------------------
-			// button order including answer button
+			// Button order including answer button
 			// Math.floor(Math.random() * 4);
 
 	
