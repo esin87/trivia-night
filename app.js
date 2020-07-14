@@ -8,23 +8,59 @@ controlPanelButton.addEventListener('click', handleStartReset);
 // [BONUS TODO] Create number of questions dropdown list and store to variable for url
 // [BONUS TODO] Create start button in DOM
 
+// TEST - QUESTIONS ARRAY
+let questionsArray;
+let currentQuestion = 0;
+let answersArray;
+let currentAnswer = 0;
+
+// ---------------------------------
+// CREATE RANDOM ORDER FOR QUESTIONS
+// ---------------------------------
+// Button order including answer button
+let answersArrayCorrectIndex = Math.floor(Math.random() * 4);
+console.log({answersArrayCorrectIndex});
+
 // Connect to trivia API for questions
 function handleStartReset(e) {
-	console.log({ e });
-	// Fetch category URL Variable and number of questions
-	// let catURL = e.target.dataset.url;  // THIS REQUIRES ATTENTION
-	// let numbOfQuestions = e.target.dataset.questions; // THIS REQUIRES ATTENTION
+	// Click handler check
+	// console.log({e});
 
+	// API information fetch
 	fetch('https://opentdb.com/api.php?amount=10&category=18&type=multiple')
 		.then((res) => {
 			return res.json();
 		})
 		.then((res) => {
 			// Console logs to check res output
-			console.log({ res });
-			console.log(res.results[0].question);
-			console.log(res.results[0].correct_answer);
+			// console.log({res});
+			// console.log(res.results[0].question);
+			// console.log(res.results[0].correct_answer);
 			
+			// TEST - SEND TO QUESTIONS ARRAY
+			questionsArray = res.results;
+			// TEST - INCREMENT QUESTION NUMBER upon advance
+			// currentQuestion++
+			// TEST - Check questionArray contents
+			console.log(questionsArray[currentQuestion]);
+			
+			// --------------------------------
+			// TEST - PUSH ALL ANSWERS TO ARRAY
+			// --------------------------------
+
+			// answerArray storing the incorrect answers
+			answersArray = questionsArray[currentQuestion].incorrect_answers;
+			console.log({answersArray});
+
+			// Selecting the correct answer and storing it to currentAnswer 
+			currentAnswer = questionsArray[currentQuestion].correct_answer;
+			console.log({currentAnswer});
+
+			// Splicing in the correct currentAnswer using answersArrayCorrectIndex random
+			// The correct answer is now randomly spliced into answersArray
+			answersArray.splice(answersArrayCorrectIndex, 0, currentAnswer);
+			console.log({answersArray});
+			// ---------------------------------
 			
 			// DOM and question added to HTML
 			let questionTargetLocation = document.querySelector('.questions-box');
@@ -69,7 +105,6 @@ function handleStartReset(e) {
 				// [TODO]
 				// IF a == randNum create an answer button
 				// ---------------------------------------
-
 				
 			}
 			
@@ -80,21 +115,16 @@ function handleStartReset(e) {
 			console.log(correctAnswer);
 
 			// Create Button
-			let newAnswerButton = document.createElement('button');
+			let newCorrectAnswerButton = document.createElement('button');
 			// Fill it with some content
 			let newCorrectAnswer = document.createTextNode(`${correctAnswer}`);
-			newAnswerButton.appendChild(newCorrectAnswer);
+			newCorrectAnswerButton.appendChild(newCorrectAnswer);
 			// [TODO]
 			// Set data-attribute that this is the correct answer
 			
 			// Add text node to the newly created button
-			answerTargetLocation.appendChild(newAnswerButton);
+			answerTargetLocation.appendChild(newCorrectAnswerButton);
 			
-			// ---------------------------------
-			// CREATE RANDOM ORDER FOR QUESTIONS
-			// ---------------------------------
-			// Button order including answer button
-			// Math.floor(Math.random() * 4);
 
 	
 		});
