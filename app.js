@@ -46,6 +46,7 @@ function handleStartReset() {
 
 			// SEND TO QUESTIONS ARRAY
 			questionsArray = res.results;
+			// console.log({questionsArray});
 
 			// INCREMENT QUESTION NUMBER upon advance
 			// currentQuestion++
@@ -148,6 +149,7 @@ function handleStartReset() {
 					e.target.style.fontWeight = '900';
 					console.log('loser :-P (jk hugs and kisses)');
 				}
+				console.log({currentQuestion});
 				
 				// Create Next Question Button to load additional questions
 				let nextQuestionButton = document.createElement('button');
