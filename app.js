@@ -1,14 +1,18 @@
 // Target the control-panel buttons
 let controlPanelButton = document.querySelector('.js-button');
 
+// DEPRECATED
 // Add event listener to the control-panel start-reset button
-controlPanelButton.addEventListener('click', handleStartReset);
+// controlPanelButton.addEventListener('click', handleStartReset);
 
-// [BONUS TODO] Create short category dropdown list and store to variable for url
-// [BONUS TODO] Create number of questions dropdown list and store to variable for url
-// [BONUS TODO] Create start button in DOM
+// -----
+// SCORE
+// -----
+let scoreTotal = 0;
 
+// ---------------
 // QUESTIONS ARRAY
+// ---------------
 let questionsArray;
 let currentQuestion = 0;
 let answersArray;
@@ -103,7 +107,6 @@ function handleStartReset() {
 				newButton.setAttribute('data-id', a);
 				newButton.setAttribute('class', 'answer');
 				newButton.addEventListener('click', answersHandler);
-
 			}
 			
 			// ------------------------
@@ -117,23 +120,33 @@ function handleStartReset() {
 				// console.log(e.target);
 				// console.log(e.target.classList);
 				// console.log(e.target.getAttribute('data-id'));
-
+				
 				// Assign data-id attribute
 				let placeHolder = e.target.getAttribute('data-id');
 				// Check answersArrayCorrectIndex
 				console.log(answersArrayCorrectIndex);
-
-				// Logic test to see if the random that we generated matches our stored value
+				
+				// Get player score display
+				let playerScore = document.querySelector('.player-score');
+				console.log(playerScore);
+				
+				let buttons = document.getElementsByClassName('answer');
+				for (let i = 0; i < buttons.length; i++){
+					buttons[i].disabled = true;
+				};
+				// Logic test to see if the random that we generated matches our stored value and score
 				if (answersArrayCorrectIndex == placeHolder) {
+					scoreTotal += 10;
+					playerScore.innerText = scoreTotal;
 					e.target.style.color = 'green';
 					e.target.style.fontWeight = "900";
 					console.log('good job');
 				} else {
+					scoreTotal -= 5;
+					playerScore.innerText = scoreTotal;
 					e.target.style.color = 'red';
 					e.target.style.fontWeight = '900';
-					console.log(
-						'loser :-P (jk hugs and kisses)'
-					);
+					console.log('loser :-P (jk hugs and kisses)');
 				}
 				
 				// Create Next Question Button to load additional questions
@@ -155,11 +168,14 @@ function handleStartReset() {
 				let question = document.querySelector('.questions-box');
 				let answerButtons = document.querySelector('.answer-buttons');
 				let nextButton = document.querySelector('.next-button');
-				question.innerHTML = '&nbsp';
-				answerButtons.innerHTML = '&nbsp';
-				nextButton.innerHTML = '&nbsp' // This doesn't clear the button as expected
+				let clearGameNavControls = document.querySelector('.game-nav-controls');
+				question.innerHTML = '';
+				answerButtons.innerHTML = '';
+				clearGameNavControls.innerHTML = '';
+				nextButton.innerHTML = '';
 				handleStartReset();
 			}
 
 		});
 }
+handleStartReset();
