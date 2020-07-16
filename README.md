@@ -1,6 +1,9 @@
 # Unnamed Trivia Project
 Description:
 Just your simple untitled trivia game that features questions related to computer science and technology.
+![image](https://user-images.githubusercontent.com/29113711/87626632-d53eae80-c6fa-11ea-95ea-22efe7fca710.png)
+
+![image](https://user-images.githubusercontent.com/29113711/87626664-e8517e80-c6fa-11ea-8cf9-ae13c87ae73e.png)
 
 Approach:
 * I like minimal design that isn't busy so I kept the HTML and CSS as light as possible. I sketched out on paper what I wanted the basic design to look like, as well as the logic flow of the questions.
