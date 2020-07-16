@@ -15,6 +15,7 @@ h1 {
     color: white;
     font-size: 3em;
 }
+
 p {
     font-size: 1.5em;
     border: 2px solid black;
@@ -24,7 +25,7 @@ p {
 button {
     font-size: 2em;
     /* margin: 1em; */
-    }
+}
 
 /* Div stylings */
 .questions-box {
@@ -34,6 +35,12 @@ button {
 .player-score {
     color: white;
     font-size: 1.5em;
+}
+
+span {
+    color: white;
+    font-size: 1.5em;
+
 }
 
 /* Footer and below the fold */
