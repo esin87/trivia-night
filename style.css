@@ -1,54 +1,56 @@
 * {
     box-sizing: border-box;
     font-family: 'Amatic SC', cursive;
-    ;
 }
-
 /* Body styling */
 body {
     background-color: gray;
-    /* min-height: 100vh; */
+    height: 100%;
 }
-
 /* Font Styling */
 h1 {
     color: white;
     font-size: 3em;
 }
-
 p {
     font-size: 1.5em;
     border: 2px solid black;
 }
-
 /* Buttons */
 button {
     font-size: 2em;
-    /* margin: 1em; */
 }
-
-/* Div stylings */
+/* div stylings */
 .questions-box {
     width: 100%;
 }
-
 .player-score {
     color: white;
     font-size: 1.5em;
 }
-
 span {
     color: white;
     font-size: 1.5em;
-
 }
-
 /* Footer and below the fold */
-footer {
+.credits {
     display: flex;
     color: white;
     justify-content: center;
     position: absolute;
     bottom: 0;
     width: 100vw;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+}
+.links {
+    display: flex;
+    color: white;
+    position: relative;
+    justify-content: center;
+    width: 100vw;
+    margin-bottom: 2em;
+    margin-top: -2em;
 }
